@@ -4,7 +4,11 @@
   "scripts": {
     "start": "node test.js"
   },
+  "main": "app.js",
   "dependencies": {
-    "mysql": "^2.13.0"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1",
+    "require": "^2.4.20"
   }
 }
