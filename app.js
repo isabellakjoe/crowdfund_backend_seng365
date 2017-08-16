@@ -10,7 +10,7 @@ db.connect( function(err) {
         console.log("Cant connect to mysql");
         process.exit(1)
     } else {
-        app.listen(4819, function() {
+        app.listen(4941, function() {
             console.log("listening on port: " + process.env.PORT)
         })
     }
