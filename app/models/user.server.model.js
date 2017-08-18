@@ -23,8 +23,8 @@ exports.insert = function(data, done){
         db.get().query('SELECT id FROM Users WHERE username=?', data.username, function(err, result){
             if(err) return done(err)
 
-            let login_details = [result[0].id, true]
-            db.get().query('INSERT INTO Login (user_id, is_logged_in) VALUES (?, ?)', login_details, function(err){
+            let login_details = [result[0].id, false]
+            db.get().query('INSERT INTO Login (user_id, is_logged_in) VALUES (?, ?)', login_details, function(err, result){
                 if(err) return done(err)
                 done(result)
             })
@@ -48,12 +48,14 @@ exports.remove = function(id, done){
     })
 }
 
-exports.getInfo = function(values, done){
+exports.loginUser = function(values, done){
     let options = [values.username, values.password]
 
-    db.get().query('SELECT (id) FROM Users WHERE username=?, password=?', options, function(err, result){
+    db.get().query('UPDATE Login SET is_logged_in=true WHERE ' +
+        'user_id=(SELECT id FROM Users WHERE username=? AND password=?)', options, function(err, result){
         if(err) return done(err)
         done(result)
     })
 }
+
 

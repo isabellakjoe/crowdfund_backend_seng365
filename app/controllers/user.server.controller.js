@@ -56,8 +56,20 @@ exports.login = function(req, res){
         password : req.body.password
     }
 
-    User.getInfo(values, function(result){
-        res.json(result)
+    User.loginUser(values, function(result){
+        let login_data = {
+            id : result,
+            token : result
+        }
+        res.json(login_data)
     })
+
 }
 
+//Need to see if the token is equal to the user id
+exports.isValidToken = function(token){
+    console.log(token)
+
+    return token != null
+
+}
