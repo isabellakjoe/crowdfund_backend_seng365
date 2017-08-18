@@ -6,7 +6,7 @@ exports.getAll = function() {
 
 exports.getOne = function(id, done){
 
-    db.get().query('SELECT * FROM Users WHERE id = ?', id, function(err, rows){
+    db.get().query('SELECT id, username, location, email FROM Users WHERE id = ?', id, function(err, rows){
         if(err) return done(err)
         done(rows)
     })
@@ -22,10 +22,18 @@ exports.insert = function(data, done){
     })
 };
 
-exports.alter = function(){
-    return null;
+exports.alter = function(options, done){
+    let values = [options.username, options.location, options.email, options.password, options.id]
+
+    db.get().query('UPDATE Users SET username=?, location=?, email=?, password=?  WHERE id=?', values, function(err, result){
+        if(err) return done(err)
+        done(result)
+    })
 };
 
-exports.remove = function(){
-    return null;
+exports.remove = function(id, done){
+    db.get().query('DELETE FROM Users WHERE id=?', id, function(err, result){
+        if(err) return done(err)
+        done(result)
+    })
 };

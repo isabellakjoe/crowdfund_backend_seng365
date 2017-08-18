@@ -25,11 +25,25 @@ exports.read = function(req, res) {
 }
 
 exports.update = function(req, res){
-    return null;
+    let options = {
+        id : req.params.id,
+        username: req.body.username,
+        location : req.body.location,
+        email : req.body.email,
+        password : req.body.password
+
+    }
+
+    User.alter(options, function(result){
+        res.json(result)
+    })
 }
 
 exports.delete = function(req, res){
-    return null;
+    let id = req.params.id
+    User.remove(id, function(result){
+        res.json(result)
+    })
 }
 
 exports.userById = function(req, res){
