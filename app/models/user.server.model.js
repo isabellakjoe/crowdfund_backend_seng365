@@ -1,26 +1,36 @@
 const db = require('../../config/db')
 
-exports.getAll = function() {
-    return null
+exports.getAll = function(done) {
+    db.get().query('SELECT * FROM Users', function(err, rows){
+        if(err) return done({"ERROR": "Error selecting"})
+        return done(rows)
+    })
 }
 
 exports.getOne = function(id, done){
-
     db.get().query('SELECT id, username, location, email FROM Users WHERE id = ?', id, function(err, rows){
         if(err) return done(err)
         done(rows)
     })
-};
-
+}
 
 exports.insert = function(data, done){
     let values = [data.username, data.location, data.email, data.password]
 
     db.get().query('INSERT INTO Users (username, location, email, password) VALUES (?, ?, ?, ?)', values, function(err, result){
         if(err) return done(err)
-        done(result)
+
+        db.get().query('SELECT id FROM Users WHERE username=?', data.username, function(err, result){
+            if(err) return done(err)
+
+            let login_details = [result[0].id, true]
+            db.get().query('INSERT INTO Login (user_id, is_logged_in) VALUES (?, ?)', login_details, function(err){
+                if(err) return done(err)
+                done(result)
+            })
+        })
     })
-};
+}
 
 exports.alter = function(options, done){
     let values = [options.username, options.location, options.email, options.password, options.id]
@@ -29,11 +39,21 @@ exports.alter = function(options, done){
         if(err) return done(err)
         done(result)
     })
-};
+}
 
 exports.remove = function(id, done){
     db.get().query('DELETE FROM Users WHERE id=?', id, function(err, result){
         if(err) return done(err)
         done(result)
     })
-};
+}
+
+exports.getInfo = function(values, done){
+    let options = [values.username, values.password]
+
+    db.get().query('SELECT (id) FROM Users WHERE username=?, password=?', options, function(err, result){
+        if(err) return done(err)
+        done(result)
+    })
+}
+

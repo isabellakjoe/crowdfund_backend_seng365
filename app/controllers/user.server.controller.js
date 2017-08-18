@@ -1,7 +1,9 @@
 const User = require('../models/user.server.model')
 
 exports.list = function(req, res) {
-    return null;
+    User.getAll(function(result){
+        res.json(result)
+    })
 }
 
 exports.create = function(req, res) {
@@ -15,6 +17,8 @@ exports.create = function(req, res) {
     User.insert(user_data, function(result){
         res.json(result)
     })
+
+
 }
 
 exports.read = function(req, res) {
@@ -27,7 +31,7 @@ exports.read = function(req, res) {
 exports.update = function(req, res){
     let options = {
         id : req.params.id,
-        username: req.body.username,
+        username : req.body.username,
         location : req.body.location,
         email : req.body.email,
         password : req.body.password
@@ -46,6 +50,14 @@ exports.delete = function(req, res){
     })
 }
 
-exports.userById = function(req, res){
-    return null;
+exports.login = function(req, res){
+    let values = {
+        username : req.body.username,
+        password : req.body.password
+    }
+
+    User.getInfo(values, function(result){
+        res.json(result)
+    })
 }
+
