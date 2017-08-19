@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.route('/users/:id')
         .get(users.read)
         .put(MyMiddlewware.myMiddleware, users.update)
-        .delete(users.delete)
+        .delete(MyMiddlewware.myMiddleware, users.delete)
 
     app.route('/users/login')
         .post(users.login)

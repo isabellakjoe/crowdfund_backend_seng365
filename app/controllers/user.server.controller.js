@@ -46,7 +46,8 @@ exports.update = function(req, res){
 exports.delete = function(req, res){
     let id = req.params.id
     User.remove(id, function(result){
-        res.json(result)
+
+        res.status(200).send(result)
     })
 }
 

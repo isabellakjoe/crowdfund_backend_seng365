@@ -42,9 +42,12 @@ exports.alter = function(options, done){
 }
 
 exports.remove = function(id, done){
-    db.get().query('DELETE FROM Users WHERE id=?', id, function(err, result){
+    db.get().query('DELETE FROM Login WHERE user_id=?', [id], function(err, result){
         if(err) return done(err)
-        done(result)
+        db.get().query('DELETE FROM Users WHERE id=?', [id], function(err, result){
+            if(err) return done(err)
+            done("User deleted")
+        })
     })
 }
 
