@@ -11,11 +11,11 @@ module.exports = function(app) {
 
     app.route('/users/:id')
         .get(users.read)
-        .put(users.update)
+        .put(MyMiddlewware.myMiddleware, users.update)
         .delete(users.delete)
 
     app.route('/users/login')
-        .post(MyMiddlewware.myMiddleware, users.login)
+        .post(users.login)
 
 }
 

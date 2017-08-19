@@ -51,11 +51,39 @@ exports.remove = function(id, done){
 exports.loginUser = function(values, done){
     let options = [values.username, values.password]
 
-    db.get().query('UPDATE Login SET is_logged_in=true WHERE ' +
-        'user_id=(SELECT id FROM Users WHERE username=? AND password=?)', options, function(err, result){
+    db.get().query("SELECT id FROM Users WHERE username=? AND password=?" ,options, function(err, result) {
         if(err) return done(err)
-        done(result)
+        if (result.length === 0) return done({ERROR:"Invalid username/password supplied"})
+
+        let id = result[0].id
+
+        db.get().query("UPDATE Login SET is_logged_in=true WHERE user_id=?" ,[id], function(err, result) {
+            if(err) return done(err)
+            done(id)
+        })
     })
 }
 
+exports.isLoggedIn = function(token, done){
+    db.get().query('SELECT is_logged_in FROM Login WHERE user_id=?', [token], function(err, result){
+        if(err) return done(0)
+        let is_logged_in
+        if (result.length === 0) {
+            is_logged_in = false
+        } else {
+            is_logged_in = result[0].is_logged_in
+        }
+        done(is_logged_in)
+    })
+
+}
+
+exports.getId = function(id, done){
+    db.get().query('SELECT id FROM Users WHERE id=?', [id], function(err, result){
+        if(err) return done(0)
+        if (result.length === 0) {
+            done(false)
+        } else done(true)
+    })
+}
 

@@ -57,19 +57,32 @@ exports.login = function(req, res){
     }
 
     User.loginUser(values, function(result){
-        let login_data = {
-            id : result,
-            token : result
+        if (result.ERROR) {
+            res.status(400).send(result.ERROR)
+        } else {
+            let login_data = {
+                id : result,
+                token : result
+            }
+            res.send(login_data)
         }
-        res.json(login_data)
+
+
     })
 
 }
 
-//Need to see if the token is equal to the user id
-exports.isValidToken = function(token){
-    console.log(token)
+exports.isValidToken = function(token, done){
+    User.isLoggedIn(token, function(result){
 
-    return token != null
+        return done(result)
+    })
+}
 
+
+exports.isUser = function(id, done){
+    User.getId(id, function(result){
+
+        return done(result)
+    })
 }
