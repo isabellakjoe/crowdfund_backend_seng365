@@ -67,10 +67,14 @@ exports.login = function(req, res){
             }
             res.send(login_data)
         }
-
-
     })
+}
 
+
+exports.logout = function(req, res){
+    User.logoutUser(req.get('X-Authorization'), function(result){
+        res.status(200).send(result)
+    })
 }
 
 exports.isValidToken = function(token, done){

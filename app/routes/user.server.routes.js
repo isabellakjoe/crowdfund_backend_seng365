@@ -17,5 +17,8 @@ module.exports = function(app) {
     app.route('/users/login')
         .post(users.login)
 
+    app.route('/users/logout')
+        .post(MyMiddlewware.logout, users.logout)
+
 }
 

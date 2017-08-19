@@ -67,6 +67,14 @@ exports.loginUser = function(values, done){
     })
 }
 
+exports.logoutUser = function(token, done){
+    db.get().query("UPDATE Login SET is_logged_in=false WHERE user_id=?", [token], function(err, result){
+        if(err) return done(err)
+        done("OK")
+    })
+
+}
+
 exports.isLoggedIn = function(token, done){
     db.get().query('SELECT is_logged_in FROM Login WHERE user_id=?', [token], function(err, result){
         if(err) return done(0)

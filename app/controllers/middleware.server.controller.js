@@ -2,9 +2,9 @@ const users = require('../controllers/user.server.controller');
 
 
 const myMiddleware = (req, res, next) => {
-    users.isUser(req.params.id, function(isUser){
+    users.isUser(req.get('X-Authorization'), function(isUser){
         if(isUser == true){
-            if (req.get('X-Authorization' ) == req.params.id) {
+            if (req.get('X-Authorization') == req.params.id) {
                 users.isValidToken(req.get('X-Authorization' ), function(result) {
                     if (result === 1) {
                         next()
@@ -22,6 +22,20 @@ const myMiddleware = (req, res, next) => {
 }
 
 
+const logout = (req, res, next) => {
+
+    users.isValidToken(req.get('X-Authorization' ), function(result) {
+        if (result === 1) {
+            next()
+        } else {
+            res.status(401).send("Unauthorized - not logged out")
+        }
+    })
+
+
+}
+
 module.exports = {
     myMiddleware: myMiddleware,
+    logout: logout
 }
