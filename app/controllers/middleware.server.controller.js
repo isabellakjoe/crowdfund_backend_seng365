@@ -1,7 +1,8 @@
 const users = require('../controllers/user.server.controller');
+const projects = require('../controllers/project.server.controller')
 
 
-const myMiddleware = (req, res, next) => {
+const login = (req, res, next) => {
     users.isUser(req.get('X-Authorization'), function(isUser){
         if(isUser == true){
             if (req.get('X-Authorization') == req.params.id) {
@@ -36,6 +37,6 @@ const logout = (req, res, next) => {
 }
 
 module.exports = {
-    myMiddleware: myMiddleware,
+    login: login,
     logout: logout
 }

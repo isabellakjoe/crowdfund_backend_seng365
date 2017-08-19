@@ -11,7 +11,8 @@ exports.connect = function(done) {
         user: 'root',
         password: "password",
         port: "3306",
-        database: "crowdfund"
+        database: "crowdfund",
+        multipleStatements: true,
     });
 
     done();

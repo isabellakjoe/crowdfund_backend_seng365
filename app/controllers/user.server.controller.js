@@ -8,9 +8,9 @@ exports.list = function(req, res) {
 
 exports.create = function(req, res) {
     let user_data = {
-        username: req.body.username,
-        location: req.body.location,
-        email: req.body.email,
+        username: req.body.user.username,
+        location: req.body.user.location,
+        email: req.body.user.email,
         password: req.body.password
     }
 
@@ -30,10 +30,10 @@ exports.read = function(req, res) {
 
 exports.update = function(req, res){
     let options = {
-        id : req.params.id,
-        username : req.body.username,
-        location : req.body.location,
-        email : req.body.email,
+        id : req.params.user.id,
+        username : req.body.user.username,
+        location : req.body.user.location,
+        email : req.body.user.email,
         password : req.body.password
 
     }
@@ -53,8 +53,8 @@ exports.delete = function(req, res){
 
 exports.login = function(req, res){
     let values = {
-        username : req.body.username,
-        password : req.body.password
+        username : req.query.username,
+        password : req.query.password
     }
 
     User.loginUser(values, function(result){
