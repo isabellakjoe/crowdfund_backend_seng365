@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fa5c4908-dcc1-4ff6-924b-0ef9bf2a0b9c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/project.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/project.server.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/project.server.model.js" afterPath="$PROJECT_DIR$/app/models/project.server.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/project.server.routes.js" afterPath="$PROJECT_DIR$/app/routes/project.server.routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" />
@@ -25,8 +28,8 @@
       <file leaf-file-name="middleware.server.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/middleware.server.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="91" column="20" lean-forward="false" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
+            <state relative-caret-position="280">
+              <caret line="82" column="1" lean-forward="true" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -45,8 +48,8 @@
       <file leaf-file-name="project.server.routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/routes/project.server.routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="68" lean-forward="true" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+            <state relative-caret-position="360">
+              <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -65,8 +68,8 @@
       <file leaf-file-name="project.server.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/project.server.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-217">
-              <caret line="25" column="49" lean-forward="true" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+            <state relative-caret-position="342">
+              <caret line="160" column="28" lean-forward="false" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -75,8 +78,8 @@
       <file leaf-file-name="project.server.model.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/project.server.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="895">
-              <caret line="85" column="46" lean-forward="false" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
+            <state relative-caret-position="378">
+              <caret line="206" column="15" lean-forward="true" selection-start-line="206" selection-start-column="15" selection-end-line="206" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -153,11 +156,11 @@
         <option value="vm:319" />
         <option value="$PROJECT_DIR$/config/db.js" />
         <option value="$PROJECT_DIR$/app/models/user.server.model.js" />
-        <option value="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" />
         <option value="$PROJECT_DIR$/app/controllers/user.server.controller.js" />
-        <option value="$PROJECT_DIR$/app/routes/project.server.routes.js" />
         <option value="$PROJECT_DIR$/app/routes/user.server.routes.js" />
         <option value="$PROJECT_DIR$/config/express.js" />
+        <option value="$PROJECT_DIR$/app/routes/project.server.routes.js" />
+        <option value="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" />
         <option value="$PROJECT_DIR$/app/controllers/project.server.controller.js" />
         <option value="$PROJECT_DIR$/app/models/project.server.model.js" />
       </list>
@@ -306,7 +309,7 @@
       <workItem from="1502871443206" duration="5989000" />
       <workItem from="1502950910222" duration="146000" />
       <workItem from="1503014033224" duration="47319000" />
-      <workItem from="1503182403629" duration="27610000" />
+      <workItem from="1503182403629" duration="29264000" />
     </task>
     <task id="LOCAL-00001" summary="Commit files">
       <created>1502871627808</created>
@@ -455,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503227781594</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixed get project&#10;- Was throwing unnecessary errors">
+      <created>1503228283367</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1503228283367</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81064000" />
+    <option name="totallyTimeSpent" value="82718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -494,7 +504,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.136716" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.136716" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -529,7 +539,8 @@
     <MESSAGE value="Create project working.&#10;- Need to implement errors" />
     <MESSAGE value="Can put images, working on getting the images to display" />
     <MESSAGE value="Fixed create project &#10;- Was throwing a heading sent error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed create project &#10;- Was throwing a heading sent error" />
+    <MESSAGE value="Fixed get project&#10;- Was throwing unnecessary errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed get project&#10;- Was throwing unnecessary errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -834,10 +845,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/middleware.server.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="82" column="1" lean-forward="true" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/routes/project.server.routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="68" lean-forward="true" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+        <state relative-caret-position="360">
+          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -850,26 +869,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/middleware.server.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="91" column="20" lean-forward="false" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/project.server.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="25" column="49" lean-forward="true" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+        <state relative-caret-position="342">
+          <caret line="160" column="28" lean-forward="false" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/project.server.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
-          <caret line="85" column="46" lean-forward="false" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
+        <state relative-caret-position="378">
+          <caret line="206" column="15" lean-forward="true" selection-start-line="206" selection-start-column="15" selection-end-line="206" selection-end-column="15" />
           <folding />
         </state>
       </provider>

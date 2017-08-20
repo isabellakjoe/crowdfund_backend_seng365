@@ -135,3 +135,32 @@ exports.getImage = function(req, res){
         }
     })
 }
+
+exports.reward = function(req, res) {
+
+    let values = {
+        id : req.params.id,
+        rewards : req.body
+    }
+
+    Project.reward(values, function(result){
+        res.status(201).send(result)
+    })
+
+}
+
+exports.getReward = function(req, res){
+
+    let id = req.params.id
+
+    Project.getReward(id, function(result){
+
+        if(result.ERROR){
+            res.status(400).send(result)
+        }else{
+            res.json(result)
+        }
+
+    })
+
+}

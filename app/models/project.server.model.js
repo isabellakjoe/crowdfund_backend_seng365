@@ -181,3 +181,32 @@ exports.getImage = function(id, done){
         done("OK")
     })
 }
+
+exports.reward = function(value, done){
+
+    let options = value.rewards
+    options.forEach(function(reward){
+
+        let values = [reward.amount, reward.description, value.id]
+
+        db.get().query('INSERT INTO Rewards (amount, description, project_id) VALUE (?, ?, ?)', values, function(err, res){
+            if(err) return done({ERROR: "Malformed request"})
+            done("OK")
+        })
+    })
+
+}
+
+exports.getReward = function(id, done){
+
+    db.get().query('SELECT * FROM Rewards WHERE project_id=?', [id], function(err, result){
+        if(err) return done(err)
+
+        if(result.length == 0){
+            return done({ERROR:"Not found"})
+        } else{
+            return done(result)
+        }
+
+    })
+}

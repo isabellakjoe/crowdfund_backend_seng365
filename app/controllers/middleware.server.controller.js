@@ -84,11 +84,13 @@ const logout = (req, res, next) => {
 
 
 
+
 module.exports = {
     login: login,
     logout: logout,
     updateProject: project,
     createProject: createProject,
     pledge: project,
-    image: project
+    image: project,
+    reward: project
 }

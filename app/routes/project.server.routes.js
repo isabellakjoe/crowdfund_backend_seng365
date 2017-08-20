@@ -20,4 +20,8 @@ module.exports = function(app) {
     app.route('/api/v1/projects/:id/image')
         .get(projects.getImage)
         .put(MyMiddlewware.image, upload.single('file'), projects.updateImage)
+
+    app.route('/api/v1/projects/:id/rewards')
+        .put(MyMiddlewware.reward, projects.reward)
+        .get(projects.getReward)
 }
