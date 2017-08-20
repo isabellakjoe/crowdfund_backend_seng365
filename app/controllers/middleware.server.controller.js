@@ -22,6 +22,38 @@ const login = (req, res, next) => {
     })
 }
 
+const updateProject = (req, res, next) => {
+
+    users.isUser(req.get('X-Authorization'), function(isUser){
+        if(isUser == true){
+            let values = {
+                authorization : req.get('X-Authorization'),
+                project_id : req.params.id
+            }
+            projects.isProject(req.params.id, function(isValidProject){
+                if(isValidProject == false){
+                   return res.status(404).send("Not found")
+                } else {
+                    projects.isProjectCreator(values, function(isCreator) {
+                        if (isCreator == true) {
+                            next()
+                        } else {
+                            res.status(403).send("Forbidden - unable to update a project you do not own")
+                        }
+                    })
+                }
+            })
+
+
+
+
+        } else {
+            res.status(401).send("Unauthorized - create account to update project")
+        }
+    })
+
+}
+
 
 const logout = (req, res, next) => {
 
@@ -38,5 +70,6 @@ const logout = (req, res, next) => {
 
 module.exports = {
     login: login,
-    logout: logout
+    logout: logout,
+    updateProject: updateProject
 }

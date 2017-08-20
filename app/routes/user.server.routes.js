@@ -27,6 +27,7 @@ module.exports = function(app) {
 
     app.route('/api/v1/projects/:id')
         .get(projects.read)
+        .put(MyMiddlewware.updateProject, projects.update)
 
 }
 

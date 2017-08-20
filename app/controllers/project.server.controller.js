@@ -61,9 +61,43 @@ exports.read = function(req, res){
     let id = req.params.id
 
     Project.getOne(id, function(result){
-        res.json(result)
+        if (result.ERROR) {
+            res.status(404).send(result.ERROR)
+        }else {
+            res.json(result)
+        }
+    })
+}
+
+exports.update = function(req, res){
+
+    let values = {
+        id : req.params.id,
+        open: req.body.open
+    }
+
+    Project.alter(values, function(result){
+        if (result.ERROR) {
+            res.status(404).send(result.ERROR)
+        }else {
+            res.status(201).send(result)
+        }
+
     })
 
-
-
 }
+
+exports.isProjectCreator = function(values, done){
+    Project.isCreator(values, function(result){
+
+        return done(result)
+    })
+}
+
+exports.isProject = function(id, done){
+    Project.isValidProject(id, function(result){
+
+        return done(result)
+    })
+}
+
