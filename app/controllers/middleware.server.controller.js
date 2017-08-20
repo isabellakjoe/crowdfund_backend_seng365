@@ -75,7 +75,7 @@ const logout = (req, res, next) => {
         if (result === 1) {
             next()
         } else {
-            res.status(401).send("Unauthorized - not logged out")
+            res.status(401).send("Unauthorized - already logged out")
         }
     })
 

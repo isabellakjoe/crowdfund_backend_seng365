@@ -2,15 +2,18 @@ const db = require('../../config/db')
 
 exports.getAll = function(done) {
     db.get().query('SELECT * FROM Users', function(err, rows){
-        if(err) return done({"ERROR": "Error selecting"})
+        if(err) return done({ERROR:"Error selecting"})
         return done(rows)
     })
 }
 
 exports.getOne = function(id, done){
-    db.get().query('SELECT id, username, location, email FROM Users WHERE id = ?', id, function(err, rows){
-        if(err) return done(err)
-        done(rows)
+    db.get().query('SELECT id, username, location, email FROM Users WHERE id = ?', id, function(err, result){
+        if(err) return done({ERROR:"Invalid id supplied"}, 400)
+        if(result.length == 0){
+            return done({ERROR:"User not found"}, 404)
+        }
+        done(result, 200)
     })
 }
 
@@ -36,7 +39,7 @@ exports.alter = function(options, done){
     let values = [options.username, options.location, options.email, options.password, options.id]
 
     db.get().query('UPDATE Users SET username=?, location=?, email=?, password=?  WHERE id=?', values, function(err, result){
-        if(err) return done(err)
+        if(err) return done({ERROR:"Malformed request"})
         done(result)
     })
 }

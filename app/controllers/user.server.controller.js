@@ -7,30 +7,46 @@ exports.list = function(req, res) {
 }
 
 exports.create = function(req, res) {
-    let user_data = {
-        username: req.body.user.username,
-        location: req.body.user.location,
-        email: req.body.user.email,
-        password: req.body.password
-    }
+    try{
+        let user_data = {
+            username: req.body.user.username,
+            location: req.body.user.location,
+            email: req.body.user.email,
+            password: req.body.password
+        }
 
-    User.insert(user_data, function(result){
-        res.json(result)
-    })
+        User.insert(user_data, function (result) {
+            res.status(201).send("OK")
+        })
+    }catch(err){
+        res.status(400).send("Malformed request")
+
+
+    }
 
 
 }
 
 exports.read = function(req, res) {
+
     let id = req.params.id
-    User.getOne(id, function(result){
-        res.json(result)
+    User.getOne(id, function (result, code) {
+        if (result.ERROR && code == 404) {
+            res.status(404).send(result.ERROR)
+        } else if(result.ERROR && code == 400){
+            res.status(400).send(result.ERROR)
+        } else {
+            res.json(result)
+        }
+
     })
+
+
 }
 
 exports.update = function(req, res){
     let options = {
-        id : req.params.user.id,
+        id : req.params.id,
         username : req.body.user.username,
         location : req.body.user.location,
         email : req.body.user.email,
@@ -39,7 +55,12 @@ exports.update = function(req, res){
     }
 
     User.alter(options, function(result){
-        res.json(result)
+        if(result.ERROR){
+            res.status(400).send(result.ERROR)
+        }else {
+            res.status(200).send("Updated")
+        }
+
     })
 }
 
