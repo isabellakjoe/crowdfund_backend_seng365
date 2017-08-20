@@ -5,8 +5,6 @@ exports.insert = function(data, done){
     let project_data = [data.project_details.title, data.project_details.subtitle, data.project_details.description,
         data.project_details.imageUri, data.project_details.target]
 
-
-
     db.get().query('INSERT INTO Projects (title, subtitle, description, imageUri, target, open) VALUES (?, ?, ?, ?, ?, false)', project_data, function(err, res) {
         if (err) return done(err)
         let project_id = res.insertId
@@ -15,26 +13,22 @@ exports.insert = function(data, done){
         data.creator_details.forEach(function(creator){
             creator_data.push([creator.id, creator.name, project_id])
         })
-
-        creator_data.forEach(function(creator){
-            db.get().query('INSERT INTO Creators (user_id, name, project_id) VALUES ?', [[creator]], function(err, result) {
-                if (err) return done(err)
-            })
-        })
-
         let reward_data = []
         data.reward_details.forEach(function(reward){
             reward_data.push([reward.id, reward.amount, reward.description, project_id])
         })
 
+        creator_data.forEach(function(creator){
+            db.get().query('INSERT INTO Creators (user_id, name, project_id) VALUES ?', [[creator]], function(err, res_creator) {
+                if (err) return done(err)
+            })
+        })
+
         db.get().query('INSERT INTO Rewards (id, amount, description, project_id) VALUES ?', [reward_data], function(err, result){
             if (err) return done(err)
-            done(result)
+            done("OK")
         })
-
         })
-
-
 }
 
 

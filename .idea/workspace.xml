@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa5c4908-dcc1-4ff6-924b-0ef9bf2a0b9c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/routes/project.server.routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/project.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/project.server.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/user.server.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/project.server.model.js" afterPath="$PROJECT_DIR$/app/models/project.server.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/user.server.routes.js" afterPath="$PROJECT_DIR$/app/routes/user.server.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/express.js" afterPath="$PROJECT_DIR$/config/express.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bower.json" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -70,21 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.server.model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.server.model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="102" column="4" lean-forward="false" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="project.server.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/project.server.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1246">
-              <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+            <state relative-caret-position="285">
+              <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -93,8 +76,28 @@
       <file leaf-file-name="project.server.model.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/project.server.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2647">
-              <caret line="193" column="1" lean-forward="true" selection-start-line="193" selection-start-column="1" selection-end-line="193" selection-end-column="1" />
+            <state relative-caret-position="421">
+              <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="response.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/express/lib/response.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="169" column="11" lean-forward="false" selection-start-line="169" selection-start-column="11" selection-end-line="169" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -153,11 +156,11 @@
         <option value="$PROJECT_DIR$/app/models/user.server.model.js" />
         <option value="$PROJECT_DIR$/app/controllers/middleware.server.controller.js" />
         <option value="$PROJECT_DIR$/app/controllers/user.server.controller.js" />
-        <option value="$PROJECT_DIR$/app/controllers/project.server.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/project.server.model.js" />
         <option value="$PROJECT_DIR$/app/routes/project.server.routes.js" />
         <option value="$PROJECT_DIR$/app/routes/user.server.routes.js" />
         <option value="$PROJECT_DIR$/config/express.js" />
+        <option value="$PROJECT_DIR$/app/controllers/project.server.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/project.server.model.js" />
       </list>
     </option>
   </component>
@@ -304,7 +307,7 @@
       <workItem from="1502871443206" duration="5989000" />
       <workItem from="1502950910222" duration="146000" />
       <workItem from="1503014033224" duration="47319000" />
-      <workItem from="1503182403629" duration="24631000" />
+      <workItem from="1503182403629" duration="27101000" />
     </task>
     <task id="LOCAL-00001" summary="Commit files">
       <created>1502871627808</created>
@@ -439,11 +442,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503220214509</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Can put images, working on getting the images to display">
+      <created>1503225079963</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1503225079963</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78085000" />
+    <option name="totallyTimeSpent" value="80555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -492,11 +502,12 @@
     <MESSAGE value="View a project working" />
     <MESSAGE value="Update project open/close working and all error codes" />
     <MESSAGE value="Create project working.&#10;- Need to implement errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create project working.&#10;- Need to implement errors" />
+    <MESSAGE value="Can put images, working on getting the images to display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Can put images, working on getting the images to display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="145" />
+      <option name="time" value="153" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -732,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/response.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="729" column="9" lean-forward="false" selection-start-line="729" selection-start-column="9" selection-end-line="729" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -754,14 +758,6 @@
     <entry file="file://$PROJECT_DIR$/images/de2672879f403e8de88f6f3492c16391">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/project.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2647">
-          <caret line="193" column="1" lean-forward="true" selection-start-line="193" selection-start-column="1" selection-end-line="193" selection-end-column="1" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
@@ -796,26 +792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/user.server.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="68" column="9" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/project.server.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="68" lean-forward="true" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
           <folding />
         </state>
       </provider>
@@ -828,10 +808,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/project.server.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="68" lean-forward="true" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="169" column="11" lean-forward="false" selection-start-line="169" selection-start-column="11" selection-end-line="169" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/project.server.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/project.server.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1246">
-          <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+        <state relative-caret-position="285">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
           <folding />
         </state>
       </provider>

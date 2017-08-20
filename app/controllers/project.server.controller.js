@@ -12,7 +12,7 @@ exports.create = function(req, res) {
 
     return User.checkUsers(ids_to_check, function(result){
         if(result == false){
-            res.status(400).send("Malformed project data")
+            return res.status(400).send("Malformed project data")
         } else {
             let project_details = {
                 title : req.body.title,
@@ -32,7 +32,8 @@ exports.create = function(req, res) {
             }
 
             Project.insert(options, function(result){
-                res.status(201).send("OK")
+               res.status(201).send(result)
+
             })
         }
     })
