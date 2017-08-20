@@ -46,7 +46,6 @@ exports.getOne = function(id, done){
 
     db.get().query('SELECT id, amount FROM Backers WHERE project_id=?', [id], function(err, backers_data){
         if(err) return done(err)
-        if (backers_data.length === 0) return done({ERROR:"Not found"})
         backers_data.map(function(row){
             return{
                 id: row.id,
@@ -57,7 +56,6 @@ exports.getOne = function(id, done){
       db.get().query('SELECT target, SUM(amount) AS currentPledged, COUNT(Backers.id) AS numberOfBackers ' +
           'FROM Backers, Projects  WHERE Backers.project_id=? AND Projects.id=? ', [id, id], function(err, progress_data){
           if(err) return done(err)
-          if (progress_data.length === 0) return done({ERROR:"Not found"})
           let progress = {
               target: progress_data[0].target,
               currentPledged: progress_data[0].currentPledged,
@@ -66,7 +64,6 @@ exports.getOne = function(id, done){
 
           db.get().query('SELECT id, amount, description FROM Rewards WHERE project_id=?', [id], function(err, rewards_data){
               if(err) return done(err)
-              if (rewards_data.length === 0) return done({ERROR:"Not found"})
               rewards_data.map(function(row){
                   return{
                       id: row.id,
@@ -77,7 +74,6 @@ exports.getOne = function(id, done){
 
               db.get().query('SELECT user_id, name FROM Creators WHERE project_id=?', [id], function(err, creators_data){
                   if(err) return done(err)
-                  if (creators_data.length === 0) return done({ERROR:"Not found"})
                   creators_data.map(function(row){
                       return{
                           user_id: row.user_id,
@@ -88,7 +84,6 @@ exports.getOne = function(id, done){
 
                   db.get().query('SELECT title, subtitle, description, imageUri target FROM Projects WHERE id=?', [id], function(err, result){
                       if(err) return done(err)
-                      if (result.length === 0) return done({ERROR:"Not found"})
                      let data =  {
                              title: result[0].title,
                              subtitle: result[0].subtitle,
