@@ -60,7 +60,7 @@ exports.list = function(req, res){
 exports.read = function(req, res){
     let id = req.params.id
 
-    Projects.getOne(id, function(result){
+    Project.getOne(id, function(result){
         res.json(result)
     })
 
