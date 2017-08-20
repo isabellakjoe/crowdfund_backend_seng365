@@ -69,6 +69,35 @@ const project = (req, res, next) => {
 }
 
 
+const pledge = (req, res, next) => {
+
+    users.isUser(req.get('X-Authorization'), function(isUser){
+        if(isUser == true){
+            let values = {
+                authorization : req.get('X-Authorization'),
+                project_id : req.params.id
+            }
+            projects.isProject(req.params.id, function(isValidProject){
+                if(isValidProject == false){
+                    return res.status(404).send("Not found")
+                } else {
+                    projects.isProjectCreator(values, function(isCreator) {
+                        if (isCreator == true) {
+                            res.status(403).send("Forbidden - cannot pledge to own project - this is fraud!")
+                        } else {
+                            next()
+                        }
+                    })
+                }
+            })
+
+        } else {
+            res.status(401).send("Unauthorized - create account to pledge to a project")
+        }
+    })
+
+}
+
 const logout = (req, res, next) => {
 
     users.isValidToken(req.get('X-Authorization' ), function(result) {
@@ -90,7 +119,7 @@ module.exports = {
     logout: logout,
     updateProject: project,
     createProject: createProject,
-    pledge: project,
+    pledge: pledge,
     image: project,
     reward: project
 }

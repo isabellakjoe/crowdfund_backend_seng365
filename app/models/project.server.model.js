@@ -178,19 +178,18 @@ exports.getImage = function(id, done){
 
     db.get().query('SELECT image FROM Projects WHERE id=?', [id], function(err, result){
         if(err) return done({ERROR: "Malformed request"})
-        done("OK")
+        done(result)
     })
 }
 
 exports.reward = function(value, done){
 
     let options = value.rewards
-    options.forEach(function(reward){
+    options.forEach(function (reward) {
+        let values = [reward.amount, reward.description, reward.id, value.id]
 
-        let values = [reward.amount, reward.description, value.id]
-
-        db.get().query('INSERT INTO Rewards (amount, description, project_id) VALUE (?, ?, ?)', values, function(err, res){
-            if(err) return done({ERROR: "Malformed request"})
+        db.get().query('UPDATE Rewards SET amount=?, description=? WHERE id=? AND project_id=?', values, function (err, res) {
+            if (err) return done({ERROR: "Malformed request"})
             done("OK")
         })
     })
@@ -199,7 +198,7 @@ exports.reward = function(value, done){
 
 exports.getReward = function(id, done){
 
-    db.get().query('SELECT * FROM Rewards WHERE project_id=?', [id], function(err, result){
+    db.get().query('SELECT id, amount, description FROM Rewards WHERE project_id=?', [id], function(err, result){
         if(err) return done(err)
 
         if(result.length == 0){
