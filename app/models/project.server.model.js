@@ -165,9 +165,30 @@ exports.isValidProject = function(id, done){
 
 exports.pledgeToProject = function(values, done){
 
-    let options = [values.project_id, values.id, values.amount, values.anonymous, values.authToken]
+    let options = [values.project_id, values.amount, values.anonymous, values.authToken]
 
-    db.get().query('')
+    db.get().query('INSERT INTO Backers (project_id, amount, anonymous, cardAuthToken) VALUES (?, ?, ?, ?)', options, function(err, result){
+        if(err) return done({ERROR: 'Bad user, project, or pledge details'})
+        done(result)
+    })
 
 
+}
+
+exports.image = function(id, image, done){
+
+    let values = [image, id]
+    db.get().query('UPDATE Projects SET image=? WHERE id=?', values, function(err, result){
+        if(err) return done({ERROR: "Malformed request"})
+        done("OK")
+    })
+
+}
+
+exports.getImage = function(id, done){
+
+    db.get().query('SELECT image FROM Projects WHERE id=?', [id], function(err, result){
+        if(err) return done({ERROR: "Malformed request"})
+        done("OK")
+    })
 }

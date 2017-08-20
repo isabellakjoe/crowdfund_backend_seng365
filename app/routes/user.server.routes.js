@@ -1,6 +1,6 @@
 const users = require('../controllers/user.server.controller')
-const projects = require('../controllers/project.server.controller')
 const MyMiddlewware = require('../controllers/middleware.server.controller')
+
 
 
 
@@ -20,18 +20,6 @@ module.exports = function(app) {
 
     app.route('/api/v1/users/logout')
         .post(MyMiddlewware.logout, users.logout)
-
-    app.route('/api/v1/projects')
-        .post(MyMiddlewware.createProject, projects.create)
-        .get(projects.list)
-
-    app.route('/api/v1/projects/:id')
-        .get(projects.read)
-        .put(MyMiddlewware.updateProject, projects.update)
-
-
-    app.route('/api/v1/projects/:id/pledge')
-        .post(projects.pledge)
 
 }
 

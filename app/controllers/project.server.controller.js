@@ -25,9 +25,6 @@ exports.create = function(req, res) {
             let creator_details = req.body.creators
             let reward_details = req.body.rewards
 
-
-
-
             let options = {
                 project_details: project_details,
                 creator_details: creator_details,
@@ -35,7 +32,7 @@ exports.create = function(req, res) {
             }
 
             Project.insert(options, function(result){
-                res.json(result)
+                res.status(201).send("OK")
             })
         }
     })
@@ -110,8 +107,30 @@ exports.pledge = function(req, res){
     }
 
     Project.pledgeToProject(values, function(result){
-
-        res.json(result)
+        if(result.ERROR){
+            res.status(400).send(result)
+        } else {
+            res.status(200).send("OK")
+        }
     })
 
+}
+
+exports.updateImage = function(req, res){
+    let id = req.params.id
+    Project.image(id, req.file.path, function(result){
+        res.status(200).send(result)
+    })
+}
+
+exports.getImage = function(req, res){
+
+    let id = req.params.id
+    Project.getImage(id, function(result){
+        if(result.ERROR){
+            res.status(400).send(result)
+        } else {
+            res.status(200).send(result)
+        }
+    })
 }

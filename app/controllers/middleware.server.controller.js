@@ -39,7 +39,7 @@ const createProject = (req, res, next) => {
 
 }
 
-const updateProject = (req, res, next) => {
+const project = (req, res, next) => {
 
     users.isUser(req.get('X-Authorization'), function(isUser){
         if(isUser == true){
@@ -60,7 +60,6 @@ const updateProject = (req, res, next) => {
                     })
                 }
             })
-
 
         } else {
             res.status(401).send("Unauthorized - create account to update project")
@@ -83,9 +82,13 @@ const logout = (req, res, next) => {
 
 }
 
+
+
 module.exports = {
     login: login,
     logout: logout,
-    updateProject: updateProject,
-    createProject: createProject
+    updateProject: project,
+    createProject: createProject,
+    pledge: project,
+    image: project
 }
