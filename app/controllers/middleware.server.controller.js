@@ -22,6 +22,23 @@ const login = (req, res, next) => {
     })
 }
 
+const createProject = (req, res, next) => {
+    users.isUser(req.get('X-Authorization'), function(isUser){
+        if(isUser == true){
+            users.isValidToken(req.get('X-Authorization' ), function(result) {
+                if (result === 1) {
+                    next()
+                } else {
+                    res.status(401).send("Unauthorized - not logged in")
+                }
+            })
+        } else {
+            res.status(401).send("Unauthorized - create account to update project")
+        }
+    })
+
+}
+
 const updateProject = (req, res, next) => {
 
     users.isUser(req.get('X-Authorization'), function(isUser){
@@ -43,8 +60,6 @@ const updateProject = (req, res, next) => {
                     })
                 }
             })
-
-
 
 
         } else {
@@ -71,5 +86,6 @@ const logout = (req, res, next) => {
 module.exports = {
     login: login,
     logout: logout,
-    updateProject: updateProject
+    updateProject: updateProject,
+    createProject: createProject
 }

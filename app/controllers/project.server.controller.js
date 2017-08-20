@@ -12,34 +12,32 @@ exports.create = function(req, res) {
 
     return User.checkUsers(ids_to_check, function(result){
         if(result == false){
-           return res.status(400).send("Malformed project data")
+            res.status(400).send("Malformed project data")
+        } else {
+            let project_details = {
+                title : req.body.title,
+                subtitle : req.body.subtitle,
+                description : req.body.description,
+                imageUri : req.body.imageUri,
+                target : req.body.target
+            }
+
+            let creator_details = req.body.creators
+            let reward_details = req.body.rewards
+
+
+
+
+            let options = {
+                project_details: project_details,
+                creator_details: creator_details,
+                reward_details: reward_details
+            }
+
+            Project.insert(options, function(result){
+                res.json(result)
+            })
         }
-    })
-
-    let project_details = {
-        title : req.body.title,
-        subtitle : req.body.subtitle,
-        description : req.body.description,
-        imageUri : req.body.imageUri,
-        target : req.body.target
-    }
-
-    let creator_details = req.body.creators
-    let reward_details = req.body.rewards
-
-    let options = {
-        project_details: project_details,
-        creator_details: creator_details,
-        reward_details: reward_details
-    }
-
-    //Check if users exists
-    //Create the project
-    //Insert creators
-    //Insert the rewards
-
-    Project.insert(options, function(result){
-        res.json(result)
     })
 
 
@@ -101,3 +99,19 @@ exports.isProject = function(id, done){
     })
 }
 
+exports.pledge = function(req, res){
+
+    let values = {
+        project_id: req.params.id,
+        id: req.body.id,
+        amount: req.body.amount,
+        anonymous: req.body.anonymous,
+        authToken: req.body.card.authToken
+    }
+
+    Project.pledgeToProject(values, function(result){
+
+        res.json(result)
+    })
+
+}

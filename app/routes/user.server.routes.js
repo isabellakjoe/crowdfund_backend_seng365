@@ -22,12 +22,16 @@ module.exports = function(app) {
         .post(MyMiddlewware.logout, users.logout)
 
     app.route('/api/v1/projects')
-        .post(projects.create)
+        .post(MyMiddlewware.createProject, projects.create)
         .get(projects.list)
 
     app.route('/api/v1/projects/:id')
         .get(projects.read)
         .put(MyMiddlewware.updateProject, projects.update)
+
+
+    app.route('/api/v1/projects/:id/pledge')
+        .post(projects.pledge)
 
 }
 

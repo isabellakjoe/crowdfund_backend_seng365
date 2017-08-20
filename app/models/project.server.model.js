@@ -4,23 +4,37 @@ const db = require('../../config/db')
 exports.insert = function(data, done){
     let project_data = [data.project_details.title, data.project_details.subtitle, data.project_details.description,
         data.project_details.imageUri, data.project_details.target]
-    let creator_data = [data.creator_details[0].id, data.creator_details[0].name]
-    let reward_data = [data.reward_details[0].id, data.reward_details[0].amount, data.reward_details[0].description]
 
-    db.get().query('INSERT INTO Projects (title, subtitle, description, imageUri, target) VALUES (?, ?, ?, ?, ?)', project_data, function(err, result) {
+
+
+    db.get().query('INSERT INTO Projects (title, subtitle, description, imageUri, target, open) VALUES (?, ?, ?, ?, ?, false)', project_data, function(err, res) {
         if (err) return done(err)
+        let project_id = res.insertId
 
-        db.get().query('INSERT INTO Creators (user_id, name) VALUES (?, ?)', creator_data, function(err, result){
-            if (err) return done(err)
+        let creator_data = []
+        data.creator_details.forEach(function(creator){
+            creator_data.push([creator.id, creator.name, project_id])
+        })
 
-            db.get().query('INSERT INTO Rewards (id, amount, description) VALUES (?, ?, ?)', reward_data, function(err, result){
+        creator_data.forEach(function(creator){
+            db.get().query('INSERT INTO Creators (user_id, name, project_id) VALUES ?', [[creator]], function(err, result) {
                 if (err) return done(err)
-                done(result)
             })
+        })
+
+        let reward_data = []
+        data.reward_details.forEach(function(reward){
+            reward_data.push([reward.id, reward.amount, reward.description, project_id])
+        })
+
+        db.get().query('INSERT INTO Rewards (id, amount, description, project_id) VALUES ?', [reward_data], function(err, result){
+            if (err) return done(err)
+            done(result)
+        })
 
         })
 
-    })
+
 }
 
 
@@ -147,4 +161,13 @@ exports.isValidProject = function(id, done){
         }
         done(isProject)
     })
+}
+
+exports.pledgeToProject = function(values, done){
+
+    let options = [values.project_id, values.id, values.amount, values.anonymous, values.authToken]
+
+    db.get().query('')
+
+
 }

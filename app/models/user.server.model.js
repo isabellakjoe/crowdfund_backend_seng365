@@ -98,12 +98,9 @@ exports.getId = function(id, done){
     })
 }
 
-
-//This is not working properly - needs to check the ids in a () not []
 exports.checkUsers = function(ids, done) {
 
-    db.get().query("SELECT * FROM Users WHERE id IN ?", ids, function(err, result){
-        console.log(result)
+    db.get().query("SELECT * FROM Users WHERE id IN ?", [[ids]], function(err, result){
         if(err) return done(0)
         if(result.length == ids.length){
             done(true)
