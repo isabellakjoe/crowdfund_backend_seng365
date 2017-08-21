@@ -4,31 +4,50 @@ const db = require('../../config/db')
 exports.insert = function(data, done){
     let project_data = [data.project_details.title, data.project_details.subtitle, data.project_details.description,
         data.project_details.imageUri, data.project_details.target]
+    db.get().getConnection(function(err, connection){
+        connection.beginTransaction(function(err){
+            connection.query('INSERT INTO Projects (title, subtitle, description, imageUri, target, open) VALUES (?, ?, ?, ?, ?, false)', project_data, function(err, res) {
+                if (err) return connection.rollback(function(err){
+                    return done(err)
+                })
+                let project_id = res.insertId
 
-    db.get().query('INSERT INTO Projects (title, subtitle, description, imageUri, target, open) VALUES (?, ?, ?, ?, ?, false)', project_data, function(err, res) {
-        if (err) return done(err)
-        let project_id = res.insertId
+                let creator_data = []
+                data.creator_details.forEach(function(creator){
+                    creator_data.push([creator.id, creator.name, project_id])
+                })
+                let reward_data = []
+                data.reward_details.forEach(function(reward){
+                    reward_data.push([reward.id, reward.amount, reward.description, project_id])
+                })
 
-        let creator_data = []
-        data.creator_details.forEach(function(creator){
-            creator_data.push([creator.id, creator.name, project_id])
-        })
-        let reward_data = []
-        data.reward_details.forEach(function(reward){
-            reward_data.push([reward.id, reward.amount, reward.description, project_id])
-        })
+                creator_data.forEach(function(creator){
+                    connection.query('INSERT INTO Creators (user_id, name, project_id) VALUES ?', [[creator]], function(err, res_creator) {
+                        if (err) return connection.rollback(function(err){
+                            return done(err)
+                        })
+                    })
+                })
 
-        creator_data.forEach(function(creator){
-            db.get().query('INSERT INTO Creators (user_id, name, project_id) VALUES ?', [[creator]], function(err, res_creator) {
-                if (err) return done(err)
+                connection.query('INSERT INTO Rewards (id, amount, description, project_id) VALUES ?', [reward_data], function(err, result){
+                    if (err) return connection.rollback(function(err){
+                        return done(err)
+                    })
+
+                    connection.commit(function(err) {
+                        if (err) {
+                            return connection.rollback(function () {
+                                return done(err)
+                            });
+                        } else {
+                            done("OK")
+                        }
+                    })
+                })
             })
         })
+    })
 
-        db.get().query('INSERT INTO Rewards (id, amount, description, project_id) VALUES ?', [reward_data], function(err, result){
-            if (err) return done(err)
-            done("OK")
-        })
-        })
 }
 
 
@@ -164,10 +183,10 @@ exports.pledgeToProject = function(values, done){
 
 }
 
-exports.image = function(id, image, done){
+exports.image = function(id, imageUri, done){
 
-    let values = [image, id]
-    db.get().query('UPDATE Projects SET image=? WHERE id=?', values, function(err, result){
+    let values = [imageUri, id]
+    db.get().query('UPDATE Projects SET imageUri=? WHERE id=?', values, function(err, result){
         if(err) return done({ERROR: "Malformed request"})
         done("OK")
     })
@@ -176,7 +195,7 @@ exports.image = function(id, image, done){
 
 exports.getImage = function(id, done){
 
-    db.get().query('SELECT image FROM Projects WHERE id=?', [id], function(err, result){
+    db.get().query('SELECT imageUri FROM Projects WHERE id=?', [id], function(err, result){
         if(err) return done({ERROR: "Malformed request"})
         done(result)
     })

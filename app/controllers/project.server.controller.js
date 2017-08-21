@@ -150,7 +150,7 @@ exports.getImage = function(req, res){
                     if(result.ERROR){
                         return res.status(400).send(result.ERROR)
                     }
-                    return res.json(result)
+                    return res.header("Content-Type", "image/png").sendFile(result[0].imageUri, {root: "./"})
                 })
             } else {
                 return res.status(404).send("Not found")
